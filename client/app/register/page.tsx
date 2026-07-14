@@ -1,5 +1,7 @@
 "use client";
-import RegisterForm from "@/components/forms/registerForm";
+import BaseLoginRegister from "@/components/forms/baseLoginRegister";
+import LeftSideForm from "@/components/forms/leftform";
+import RightSideForm from "@/components/forms/rightform";
 import { useAuth } from "@/context/authcontext";
 import { Register as RegisterInterface } from "@/interfaces/registerInterface";
 import { useRouter } from "next/navigation";
@@ -25,11 +27,20 @@ export default function Register(){
     }
     return(
         <div className="min-h-screen gap-4 py-28 bg-base-300">
-            <RegisterForm 
+            <BaseLoginRegister>
+                <LeftSideForm/>
+                <RightSideForm
+                onChange={handleOnChange} 
+                form={form} 
+                onSubmit={handleOnSubmit}
+                isLoading={isLoading}
+                isLogin={false} />
+            </BaseLoginRegister>
+            {/* <RegisterForm 
             onChange={handleOnChange} 
             form={form} 
             onSubmit={handleOnSubmit}
-            isLoading={isLoading} />
+            isLoading={isLoading} /> */}
         </div>
     )
 }

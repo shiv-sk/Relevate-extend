@@ -14,10 +14,18 @@ export default function BaseSelect(
         <div>
             {
                 label && (
-                    <label htmlFor="" className="label font-bold text-lg">{label}</label>
+                    <label htmlFor="" className="label">
+                        <span className="label-text font-medium text-base-content">
+                            {label}
+                        </span>
+                    </label>
                 )
             }
-            <select className={`select w-full ${className}`} value={value} onChange={onChange} required={required}>
+            <select 
+            className={`input input-bordered bg-base-100 border-base-300 focus:border-primary focus:outline-none transition-colors w-full ${className}`}
+            value={value} 
+            onChange={onChange} 
+            required={required}>
                 {
                     option.map((opt)=>(
                         <option key={opt} value={opt}>

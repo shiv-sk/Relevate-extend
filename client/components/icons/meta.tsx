@@ -2,22 +2,16 @@
 
 import { ReactNode } from "react";
 
-export default function Meta({content, icon, value}: {content: string, icon: ReactNode, value: string}){
+export default function Meta({label, icon, value}: {label: string, icon: ReactNode, value: string}){
     return(
-        <div className="flex flex-col gap-0.5 justify-center items-center">
-            <div className="flex flex-wrap gap-1 justify-center items-center">
-                <span className="text-lg">{icon}</span> 
-                <span className="font-semibold">{content}</span>
+        <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2 text-sm text-base-content/60">
+                <span className="text-base">{icon}</span> 
+                <span>{label}</span>
             </div>
-            <div>
-                {
-                    content === "Salary" ? (
-                        <p>{value}/LPA</p>
-                    ): (
-                        <p>{value}</p>
-                    )
-                }
-            </div>
+            <p className="font-semibold text-base">
+                {value}
+            </p>
         </div>
     )
 }

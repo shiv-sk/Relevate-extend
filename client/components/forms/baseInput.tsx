@@ -20,7 +20,7 @@ export default function BaseInput(
             <input 
             type={type} 
             placeholder={placeholder} 
-            className={`input w-full ${className}`} 
+            className={`input input-bordered bg-base-100 border-base-300 focus:border-primary focus:outline-none transition-colors w-full ${className}`} 
             value={value} 
             onChange={onChange}
             required={required} />

@@ -1,6 +1,9 @@
 "use client";
 
+import BaseLoginRegister from "@/components/forms/baseLoginRegister";
+import LeftSideForm from "@/components/forms/leftform";
 import LoginForm from "@/components/forms/loginForm";
+import RightSideForm from "@/components/forms/rightform";
 import { useAuth } from "@/context/authcontext";
 import { Login as LoginInterface } from "@/interfaces/loginInterface";
 import { useRouter } from "next/navigation";
@@ -45,13 +48,24 @@ export default function Login(){
     }
     return(
         <div className="min-h-screen gap-4 py-24 bg-base-300">
-            <LoginForm 
+            <BaseLoginRegister>
+                <LeftSideForm/>
+                <RightSideForm
+                onChange={handleOnChange} 
+                form={form} 
+                onSubmit={handleOnSubmit}
+                isLoading={isLoading}
+                isLogin={true}
+                handleDemoEmployer={handleDemoEmployer}
+                handleDemoJobSeeker = {handleDemoJobSeeker} />
+            </BaseLoginRegister>
+            {/* <LoginForm 
             onChange={handleOnChange} 
             form={form} 
             onSubmit={handleOnSubmit} 
             isLoading={isLoading}
             handleDemoEmployer={handleDemoEmployer}
-            handleDemoJobSeeker = {handleDemoJobSeeker}/>
+            handleDemoJobSeeker = {handleDemoJobSeeker}/> */}
         </div>
     )
 }

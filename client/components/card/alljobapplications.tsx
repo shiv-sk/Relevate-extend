@@ -7,21 +7,21 @@ import { JobApplication } from "@/interfaces/applicationInterface";
 
 export default function AllJobApplicationsCard({applications}: {applications: JobApplication[]}){
     return(
-        <div className="gap-3 px-2 py-4 flex flex-wrap justify-center items-center">
+        <div className="max-w-4xl mx-auto space-y-5">
             {
                 applications.map((application)=>(
-                    <BaseApplicationCard key={application._id} className="md:w-[680px] w-[350px]">
-                        <div className="py-4 px-3 flex-col">
-                            <h3 className="text-lg font-bold">
-                                <span className="font-normal">{application.profileSnapshot?.name}</span>
+                    <BaseApplicationCard key={application._id} className="w-full max-w-3xl">
+                        <div className="flex flex-col gap-5 p-6">
+                            <h3 className="text-xl font-semibold">
+                                {application.profileSnapshot?.name}
                             </h3>
-                            <h5 className="text-lg font-bold"> 
-                                <span className="font-normal text-base">{application.profileSnapshot?.email}</span>
-                            </h5>
-                            <h5 className="text-lg font-bold"> 
-                                <span className="font-normal text-base">{application.profileSnapshot?.lookingFor}</span>
-                            </h5>
-                            <div className="card-actions justify-end">
+                            <p className="text-base-content/70"> 
+                                {application.profileSnapshot?.email}
+                            </p>
+                            <p className="text-base-content/60"> 
+                                {application.profileSnapshot?.lookingFor}
+                            </p>
+                            <div  className="border-t border-base-300 pt-4 flex justify-end">
                                 <Link href={`/jobapplication/${application._id}`}>
                                     <BaseButton type={"button"} 
                                     text="View" 
@@ -33,6 +33,5 @@ export default function AllJobApplicationsCard({applications}: {applications: Jo
                 ))
             }
         </div>
-        
     )
 }

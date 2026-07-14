@@ -16,9 +16,7 @@ export default function ProfileDisplay({profile}: {profile: ProfileInterface}){
     return(
         <div className="min-h-screen bg-base-300 py-6">
             <div 
-            className="
-            flex flex-col justify-center py-6 w-full max-w-[560px] 
-            mx-auto space-y-2 px-4 rounded-lg shadow-lg">
+            className="w-full max-w-2xl mx-auto rounded-xl border border-base-300 bg-base-100 shadow-sm p-6 space-y-6">
                 <Header 
                 name={profile?.name} 
                 email={profile?.email} 

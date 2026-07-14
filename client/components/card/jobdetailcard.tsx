@@ -52,23 +52,25 @@ export default function JobDetail(
     return(
         <JobDetailBaseCard>
             <div className="flex flex-col gap-2 space-x-2 justify-center w-full px-4">
-                <h3 className="text-3xl font-bold">{job.title}</h3>
-                <p className="text-lg text-gray-500">{job.companyId.name ?? "companyName"}</p>
-                <div className="flex flex-wrap gap-6 mt-4 text-sm justify-between">
-                    <Meta content={"Salary"} icon={<CiMoneyBill />} value={job.salary ?? "Salary"} />
-                    <Meta content={"Location"} icon={<SlLocationPin />} value={job.location ?? "Location"} />
-                    <Meta content={"Type"} icon={<BsBriefcase />} value={job.type ?? "Type"} />
-                    <Meta content={"Level"} icon={<FaRegUser />} value={job.level ?? "Level"} />
+                <div>
+                    <h1 className="text-3xl font-bold">{job.title}</h1>
+                    <p className="text-base-content/60 text-lg">{job.companyId.name ?? "companyName"}</p>
                 </div>
-                <hr className="bg-gray-500" />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+                    <Meta label={"Salary"} icon={<CiMoneyBill />} value={job.salary ?? "Salary"} />
+                    <Meta label={"Location"} icon={<SlLocationPin />} value={job.location ?? "Location"} />
+                    <Meta label={"Type"} icon={<BsBriefcase />} value={job.type ?? "Type"} />
+                    <Meta label={"Level"} icon={<FaRegUser />} value={job.level ?? "Level"} />
+                </div>
+                <hr className="divider border-base-300" />
                 <div className="flex flex-col py-1">
                     <h3 className="text-lg font-semibold">Required skills</h3>
                     <div className="flex gap-2">
                         {
                             job.requiredSkills.length > 0 ? (
                                 job.requiredSkills.map((skill)=>(
-                                    <div key={skill} className="flex flex-wrap mt-2">
-                                        <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                                    <div key={skill} className="flex flex-wrap gap-2 mt-3">
+                                        <span  className="badge badge-primary badge-outline">
                                             {skill}
                                         </span>
                                     </div>
@@ -82,13 +84,13 @@ export default function JobDetail(
                     </div>
                 </div>
                 
-                <section className="mt-3">
+                <section className="space-y-3">
                     <h3 className="text-xl font-semibold mb-2">Job Description</h3>
                     <p className="leading-relaxed text-gray-700">
                         {job.description}
                     </p>
                 </section>
-                <div className="mt-3">
+                <div className="space-y-4 border-t border-base-300 pt-6">
                     <h3 className="font-bold text-lg">AboutCompany</h3>
                     <p className="text-lg">
                         {job.companyId.about}
@@ -98,7 +100,7 @@ export default function JobDetail(
                             job.companyId.socialMedia.length > 0 ? (
                                 job.companyId.socialMedia.map((socilaMedia, index)=>(
                                     <div key={index} className="flex flex-row gap-2 space-x-2 justify-center items-center">
-                                        <a href={socilaMedia.link} target="_blank" className="text-sm mt-2 font-bold">
+                                        <a href={socilaMedia.link} target="_blank" className="badge badge-outline">
                                             {socilaMedia.name}
                                         </a>
                                     </div>
@@ -110,7 +112,7 @@ export default function JobDetail(
                             )
                         }
                     </div>
-                    <div className="card-actions justify-end gap-3 mt-3">
+                    <div className="flex flex-wrap justify-end gap-3 border-t border-base-300 pt-6">
                         {
                             user && user.role === "JobSeeker" && (
                                 <>

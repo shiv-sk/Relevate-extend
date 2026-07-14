@@ -68,19 +68,25 @@ export default function CompanyJobs(){
     }
 
     return(
-        <div className="space-y-3.5 py-5 bg-base-300 min-h-screen ">
-            <div className="flex flex-col gap-6 w-full mx-auto lg:max-w-[1200px]">
-                <div className="w-full max-w-[600px] mx-auto">
+        <div className="min-h-screen bg-base-200 py-8">
+
+            <div className="max-w-7xl mx-auto px-4 space-y-8">
+
+                <div className="max-w-2xl mx-auto">
                     <SearchBar 
                     value={search} 
                     onSearchChange={handleOnSearchChange} 
                     handleSearchOnClick={handleSearchOnClick}/>
                 </div>
-                <div className="flex flex-wrap gap-6 w-full">
-                    <div className="w-full lg:w-[30%] py-4 px-4 lg:sticky lg:top-4 h-fit">
-                        <Filter filters={filters} onChange={handleFilterOnChange} handleFilterClick={handleFilterClick} />
-                    </div>
-                    <div className="w-full lg:w-[60%] py-4">
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                    <aside className="lg:col-span-4 lg:sticky lg:top-6 self-start">
+                        <Filter filters={filters} onChange={handleFilterOnChange} handleFilterClick={handleFilterClick}/>
+                    </aside>
+
+                    <main className="lg:col-span-8">
+
                         {
                             isLoading ? (
                                 <div className="flex justify-center items-center">
@@ -91,14 +97,24 @@ export default function CompanyJobs(){
                                     <JobCardSimple jobs={companyJobs}></JobCardSimple>
                                 </>
                             ) : (
-                                <div>
-                                    <p>No jobs</p>
+                                <div className="bg-base-100 border border-base-300 rounded-xl shadow-sm p-10 text-center">
+                                    <h3 className="text-xl font-semibold">
+                                        No Jobs Found
+                                    </h3>
+                                    <p className="text-base-content/60 mt-2">
+                                        We couldn&apos;t find any jobs matching your search or filters.
+                                    </p>
+                                    <p className="text-sm text-base-content/50 mt-4">
+                                        Try changing the search keyword or clearing some filters.
+                                    </p>
                                 </div>
                             )
                         }
-                    </div>
+
+                    </main>
+
                 </div>
-            </div> 
+            </div>
         </div>
     )
 }

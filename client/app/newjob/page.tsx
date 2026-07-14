@@ -124,7 +124,7 @@ export default function NewJob(){
     }
     return(
         <div className="min-h-screen gap-4 py-5 bg-base-300">
-            <div className="max-w-sm mx-auto">
+            <div className="max-w-2xl mx-auto">
                 {
                     isAILoading ? (
                         <div className="flex justify-center items-center">

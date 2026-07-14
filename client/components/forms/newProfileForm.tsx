@@ -60,37 +60,39 @@ export default function ProfileForm(
         removeSkill: (index: number)=>void
     }){
     return(
-        <div className="bg-base-100 flex justify-center items-center max-w-sm w-full p-6 rounded-lg shadow-lg mx-auto flex-col">
+        <div className="bg-base-100 border border-base-300 rounded-xl shadow-sm max-w-5xl mx-auto p-8">
             <h1 className="text-center font-bold text-2xl underline">{title}</h1>
             <div>
                 <form className="gap-2.5 py-6 space-y-3 w-full" onSubmit={onSubmit}>
-                    <BaseInput
-                    label="Name" 
-                    type="text" 
-                    onChange={(e)=>onChange("name", e.target.value)}
-                    value={form.name} 
-                    placeholder="John Doe" />
-                            
-                    <BaseInput
-                    label="Email" 
-                    type="text" 
-                    onChange={(e)=>onChange("email", e.target.value)} 
-                    value={form.email} 
-                    placeholder="exp123@email.com" />
-        
-                    <BaseInput 
-                    label="CurrentLocation" 
-                    type="text" 
-                    onChange={(e)=>onChange("currentLocation", e.target.value)} 
-                    value={form.currentLocation} 
-                    placeholder="Lucknow" />
+                    <div className="grid md:grid-cols-2 gap-5">
+                        <BaseInput
+                        label="Name" 
+                        type="text" 
+                        onChange={(e)=>onChange("name", e.target.value)}
+                        value={form.name} 
+                        placeholder="John Doe" />
+                                
+                        <BaseInput
+                        label="Email" 
+                        type="text" 
+                        onChange={(e)=>onChange("email", e.target.value)} 
+                        value={form.email} 
+                        placeholder="exp123@email.com" />
+            
+                        <BaseInput 
+                        label="CurrentLocation" 
+                        type="text" 
+                        onChange={(e)=>onChange("currentLocation", e.target.value)} 
+                        value={form.currentLocation} 
+                        placeholder="Lucknow" />
 
-                    <BaseInput 
-                    label="LookingFor" 
-                    type="text" 
-                    onChange={(e)=>onChange("lookingFor", e.target.value)} 
-                    value={form.lookingFor} 
-                    placeholder="Testing" />
+                        <BaseInput 
+                        label="LookingFor" 
+                        type="text" 
+                        onChange={(e)=>onChange("lookingFor", e.target.value)} 
+                        value={form.lookingFor} 
+                        placeholder="Testing" />
+                    </div>
 
                     <Textarea 
                     label="Bio" 
@@ -98,7 +100,7 @@ export default function ProfileForm(
                     onChange={(e)=>onChange("bio", e.target.value)} 
                     placeholder={"bio"} />
 
-                    <div className="space-y-1.5">
+                    <div className="border border-base-300 rounded-xl p-6 bg-base-100 space-y-5">
                         <BaseInput 
                         label="Skill" 
                         type="text" 
@@ -130,10 +132,11 @@ export default function ProfileForm(
                         }  
                     </div>
 
-                    <div className="space-y-1.5">
-                        <h3 className="text-lg font-semibold">Education 
-                            <span className="font-normal">(optional)</span>
-                        </h3>
+                    <div className="border border-base-300 rounded-xl p-6 bg-base-100 space-y-5">
+                        Education
+                        <span className="font-normal text-base-content/60">
+                            {" "}(optional)
+                        </span>
                         {
                             form.education.length > 0 && form.education.map((edu, index)=>(
                                 <li key={index} className="p-2 border rounded">
@@ -174,10 +177,11 @@ export default function ProfileForm(
                         handleOnClick={addEducation}/>
                     </div>
 
-                    <div className="space-y-1.5">
-                        <h3 className="text-lg font-semibold">Experience 
-                            <span className="font-normal">(optional)</span>
-                        </h3>
+                    <div className="border border-base-300 rounded-xl p-6 bg-base-100 space-y-5">
+                        Experience
+                        <span className="font-normal text-base-content/60">
+                            {" "}(optional)
+                        </span>
                         {
                             form.experience.length > 0 && form.experience.map((exp, index)=>(
                                 <li key={index} className="p-2 border rounded">
@@ -218,10 +222,11 @@ export default function ProfileForm(
                         handleOnClick={addExperience}/>
                     </div>
 
-                    <div className="space-y-1.5">
-                        <h3 className="text-lg font-semibold">Project 
-                            <span className="font-normal">(optional)</span>
-                        </h3>
+                    <div className="border border-base-300 rounded-xl p-6 bg-base-100 space-y-5">
+                        Project
+                        <span className="font-normal text-base-content/60">
+                            {" "}(optional)
+                        </span>
                         {
                             form.projects.length > 0 && form.projects.map((pro, index)=>(
                                 <li key={index} className="p-2 border rounded">
@@ -282,10 +287,11 @@ export default function ProfileForm(
                         handleOnClick={addProject}/>
                     </div>
 
-                    <div className="space-y-1.5">
-                        <h3 className="text-lg font-semibold">SocialMedia 
-                            <span className="font-normal">(optional)</span>
-                        </h3>
+                    <div className="border border-base-300 rounded-xl p-6 bg-base-100 space-y-5">
+                        SocialMedia
+                        <span className="font-normal text-base-content/60">
+                            {" "}(optional)
+                        </span>
                         {
                             form.socialMedia.length > 0 && form.socialMedia.map((media, index)=>(
                                 <li key={index} className="p-2 border rounded">
@@ -299,18 +305,18 @@ export default function ProfileForm(
                             ))
                         }
                         <BaseInput 
-                        label="Name" 
+                        label="Platform" 
                         type="text" 
                         onChange={(e)=>onSocialMediaChange("name", e.target.value)} 
                         value={socialMedia.name || ""} 
-                        placeholder="SocialMedia Name" />
+                        placeholder="Facebook" />
 
                         <BaseInput 
-                        label="Link" 
+                        label="URL" 
                         type="text" 
                         onChange={(e)=>onSocialMediaChange("link", e.target.value)} 
                         value={socialMedia.link || ""} 
-                        placeholder="SocialMedia-Link" />
+                        placeholder="https://facebook.com" />
 
                         <BaseButton 
                         type="button" 

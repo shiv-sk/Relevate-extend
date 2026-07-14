@@ -32,7 +32,7 @@ export default function Application({application, handleAnalyzeCandidate, handle
             availability={application.availability} 
             experience={application.experience} />
 
-            <div className="card-actions justify-end">
+            <div className="flex flex-wrap justify-end gap-3 border-t border-base-300 pt-6">
                 <BaseButton 
                 type={"button"} 
                 text={"Connect"} 

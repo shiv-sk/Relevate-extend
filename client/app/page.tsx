@@ -1,13 +1,21 @@
 "use client";
 import { baseUrl, getAndDeleteReq } from "@/apicalls/apiCalls";
 import JobCardSimple from "@/components/card/jobsimple.card";
+import SimpleJobCrad from "@/components/card/simplejobcard";
+import BaseButton from "@/components/forms/baseButton";
 import { Loadingstate } from "@/components/forms/loadingState";
+import Meta from "@/components/icons/meta";
 import SearchBar from "@/components/searchbar/search";
 import Filter from "@/components/sidebar/filter";
 import { useGetAllJobs } from "@/customhooks/job";
 import { JobFilter, JobLevel, JobLocation, JobType } from "@/interfaces/jobInterface";
 import { isAxiosError } from "axios";
+import Link from "next/link";
 import { useState } from "react";
+import { BsBriefcase } from "react-icons/bs";
+import { CiMoneyBill } from "react-icons/ci";
+import { FaRegUser } from "react-icons/fa";
+import { SlLocationPin } from "react-icons/sl";
 
 export default function Home(){
     const [search, setSearch] = useState("");
@@ -66,16 +74,16 @@ export default function Home(){
     }
 
     return(
-        <div className="space-y-3.5 py-5 bg-base-300 min-h-screen ">
-            <div className="flex flex-col gap-6 w-full mx-auto lg:max-w-[1200px]">
-                <div className="w-full max-w-[600px] mx-auto">
+        <div className="min-h-screen bg-base-200 py-8">
+            <div className="max-w-7xl mx-auto px-4 space-y-8">
+                <div className="max-w-2xl mx-auto">
                     <SearchBar onSearchChange={handleOnChange} value={search} handleSearchOnClick={handleSearchOnClick}/>
                 </div>
-                <div className="flex flex-wrap gap-4 w-full">
-                    <div className="w-full lg:w-[30%] py-4 px-4 lg:sticky lg:top-4 h-fit">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <aside className="lg:col-span-4 lg:sticky lg:top-6 self-start">
                         <Filter filters={filters} onChange={handleFilterOnChange} handleFilterClick={handleFilterClick} />
-                    </div>
-                    <div className="w-full lg:w-[60%] py-4">
+                    </aside>
+                    <main className="lg:col-span-8">
                         {
                             isLoading ? (
                                 <div className="flex justify-center items-center">
@@ -83,13 +91,21 @@ export default function Home(){
                                 </div> 
                             ) : jobs && jobs.length > 0 ? (
                                 <JobCardSimple jobs={jobs}></JobCardSimple>
-                            ) : ( 
-                                <div>
-                                    <p>Jobs are not found!</p>
+                            ) : (
+                                <div className="bg-base-100 border border-base-300 rounded-xl shadow-sm p-10 text-center">
+                                    <h3 className="text-xl font-semibold">
+                                        No Jobs Found
+                                    </h3>
+                                    <p className="text-base-content/60 mt-2">
+                                        We couldn&apos;t find any jobs matching your search or filters.
+                                    </p>
+                                    <p className="text-sm text-base-content/50 mt-4">
+                                        Try changing the search keyword or clearing some filters.
+                                    </p>
                                 </div>
                             )
                         }
-                    </div>
+                    </main>
                 </div>
             </div>
         </div>
